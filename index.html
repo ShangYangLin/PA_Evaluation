@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>醛固酮高血壓風險評估</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="intro"></div>
+        <div id="form-container">
+            <h1>醛固酮高血壓風險評估</h1>
+            <p>原發性高醛固酮症（Primary hyperaldosteronism; PA）是目前最常見的次發性高血壓原因，盛行率約占所有高血壓族群的5~13%，臨床的症狀可能有高血壓、低血鉀、藥物控制效果不佳等，由於醛固酮（aldosternone）對心臟、血管壁及腎臟的影響，容易引發心肌肥大、心臟衰竭、心肌梗塞、心律不整、中風或腎功能受損等不良後果，此外，PA患者胰島素抗性也較高。此網頁由台大醫院吳允升醫師團隊與林上揚博士共同開發，運用人工智能演算法幫助您快速評估醛固酮高血壓的風險。</p><!-- 此演算法通過台大醫院院內測試，並在多家醫院驗證，研究論文撰寫投稿中。</p> -->
+            <h2>請輸入您的基本資料</h2>
+            <form id="assessment-form">
+                <label for="name">名字:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="gender">性別:</label>
+                <select id="gender" name="gender" required>
+                    <option value="male">男</option>
+                    <option value="female">女</option>
+                </select>
+                <label for="height">身高 (cm):</label>
+                <input type="number" id="height" name="height" step="0.1" required>
+                <label for="weight">體重 (kg):</label>
+                <input type="number" id="weight" name="weight" step="0.1" required>
+                <label for="age">年齡:</label>
+                <input type="number" id="age" name="age" required>
+                <label for="phone">聯絡電話:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="systolic">收縮壓 (mmHg):</label>
+                <input type="number" id="systolic" name="systolic" required>
+                <label for="calcium">血鈣濃度 (mg/dL):</label>
+                <input type="number" id="calcium" name="calcium" step="0.1" required>
+                <label for="diastolic">舒張壓 (mmHg):</label>
+                <input type="number" id="diastolic" name="diastolic" required>
+                <label for="phosphorus">血磷濃度 (mg/dL):</label>
+                <input type="number" id="phosphorus" name="phosphorus" step="0.1" required>
+                <label for="egfr">eGFR值 (mL/min/1.73m²):</label>
+                <input type="number" id="egfr" name="egfr" step="0.1" required>
+                <label for="potassium">血鉀濃度 (mmol/L):</label>
+                <input type="number" id="potassium" name="potassium" step="0.01" required>
+                <button type="button" id="sendBtn">送出</button>
+            </form>
+            <div id="loading" class="hidden">
+                <p>請等待...</p>
+                <div class="spinner"></div>
+            </div>
+        </div>
+        <div id="result-container" class="hidden">
+            <h2>結果</h2>
+            <p id="result-text"></p>
+            <canvas id="pie-chart" width="400" height="400"></canvas>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</body>
+</html>
+
+
+

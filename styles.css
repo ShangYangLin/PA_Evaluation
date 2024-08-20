@@ -1,0 +1,91 @@
+/* 基本样式 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+#app {
+    max-width: 900px; /* 增加最大寬度以容納更多內容 */
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 確保內邊距不影響總寬度 */
+}
+
+#intro, #form-container, #result-container {
+    margin-bottom: 20px;
+}
+
+p {
+    text-indent: 2em; /* 设置缩排量为 2em */
+}
+
+label {
+    display: block;
+    margin: 5px 0 2px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* 每行兩列 */
+    gap: 10px; /* 增加表單元素之間的間距 */
+}
+
+input, select {
+    padding: 8px;
+    box-sizing: border-box; /* 確保內邊距不影響總寬度 */
+    width: 100%;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    grid-column: span 4; /* 按鈕跨越兩列 */
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* 隐藏元素 */
+.hidden {
+    display: none;
+}
+
+#loading {
+    text-align: center;
+    display: none; /* 默认为隐藏 */
+}
+
+.spinner {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left: 8px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+canvas {
+    width: 70% !important;
+    height: auto !important;
+    margin: 0 auto; /* 居中显示图表 */
+}
