@@ -16,27 +16,29 @@ $(document).ready(function() {
             diastolic: parseFloat($('#diastolic').val()),
             potassium: parseFloat($('#potassium').val()),
             egfr: parseFloat($('#egfr').val()),
+            PRA: parseFloat($('#PRA').val()),
             calcium: parseFloat($('#calcium').val()),
             phosphorus: parseFloat($('#phosphorus').val()),
-            phone: $('#phone').val()
+            phone: $('#phone').val(),
+            hospital: $('#hospital').val()
         };
   
         // Debugging: Log form data
         console.log('Form Data:', formData);
-  
+        
         // Send data to Google Apps Script
-        $.post('https://script.google.com/macros/s/AKfycbzLS-z19JT1kBupvtnePy-PuxHmIefC2o1lEKJjc07No7atL7gPs0ayqmUq6MzhJUiR9A/exec', JSON.stringify(formData), function(response) {
+        $.post('https://script.google.com/macros/s/AKfycbwX1jLKHxHV6sAkj7KllZQ1h_PGyt3_qKMVeobdrIci5Kk_TOF9aMlLKPtBYCISi9kzcw/exec', JSON.stringify(formData), function(response) {
             console.log('Response from server:', response);
             // Proceed with existing code
             setTimeout(() => {
                 let resultCategory, recommendation;
-                if (formData.potassium > 5 && formData.egfr > 18) {
+                if (formData.potassium <= 3.65 && formData.PRA <= 0.985) {
                     resultCategory = 'A';
                     recommendation = '建議您接受A類治療或檢測';
-                } else if (formData.potassium > 5 && formData.egfr <= 18) {
+                } else if (formData.potassium <= 3.65 && formData.PRA > 0.985) {
                     resultCategory = 'B';
                     recommendation = '建議您接受B類治療或檢測';
-                } else if (formData.potassium <= 5 && formData.egfr > 18) {
+                } else if (formData.potassium > 3.65 && formData.PRA <= 0.985) {
                     resultCategory = 'C';
                     recommendation = '建議您接受C類治療或檢測';
                 } else {
